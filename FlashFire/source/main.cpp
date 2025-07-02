@@ -1,5 +1,6 @@
 #include <iostream>
 #include "utility/logger.h"
+#include "core/game.h"
 
 int main(int argc, char* argv[])
 {
@@ -7,6 +8,7 @@ int main(int argc, char* argv[])
 
 	Log::Init();
 	Log::Info("Initialized spdlogger");
+	FF::game game;
 
-	return 0;
+	return game.Run();
 }
