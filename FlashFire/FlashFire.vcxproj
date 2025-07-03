@@ -158,6 +158,7 @@
     <ClInclude Include="source\core\graphics\renderer.h" />
     <ClInclude Include="source\core\game.h" />
     <ClInclude Include="source\gameConfig.h" />
+    <ClInclude Include="source\utility\deltaTime.h" />
     <ClInclude Include="source\utility\logger.h" />
     <ClInclude Include="source\core\graphics\window.h" />
   </ItemGroup>

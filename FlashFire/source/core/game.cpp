@@ -3,6 +3,7 @@
 #include "graphics/window.h"
 #include "graphics/renderer.h"
 
+
 namespace FF
 {
 	int game::Run()
@@ -16,7 +17,11 @@ namespace FF
 		//Update project
 		while (m_ShouldRun)
 		{
+			m_DeltaTime.Update();
 			HandleInputEvents();
+			//If we are supposed to stop, exit out early.
+			if (!m_ShouldRun) break;
+			
 			Render();
 		}
 
@@ -32,6 +37,9 @@ namespace FF
 		{
 			return false;
 		}
+
+		//Set current time for DeltaTime
+		m_DeltaTime.GetTime();
 
 		//Create Window
 		if (!window::Create())
