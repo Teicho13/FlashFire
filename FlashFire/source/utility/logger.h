@@ -19,25 +19,25 @@ public:
 	template<typename FormatString, typename... Args>
 	static void Debug(const FormatString& fmt, const Args&... args)
 	{
-		spdlog::debug(fmt, args...);
+		spdlog::debug(fmt::runtime(fmt), args...);
 	}
 
 	template<typename FormatString, typename... Args>
 	static void Info(const FormatString& fmt, const Args&... args)
 	{
-		spdlog::info(fmt, args...);
+		spdlog::info(fmt::runtime(fmt), args...);
 	}
 
 	template<typename FormatString, typename... Args>
 	static void Warning(const FormatString& fmt, const Args&... args)
 	{
-		spdlog::warn(fmt, args...);
+		spdlog::warn(fmt::runtime(fmt), args...);
 	}
 
 	template<typename FormatString, typename... Args>
 	static void Error(const FormatString& fmt, const Args&... args)
 	{
-		spdlog::error(fmt, args...);
+		spdlog::error(fmt::runtime(fmt), args...);
 	}
 
 };
