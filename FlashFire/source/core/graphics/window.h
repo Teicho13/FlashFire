@@ -11,8 +11,6 @@ namespace FF
 
 			static SDL_Window* GetWindow();
 	};
-
-	inline SDL_Window* m_Window = nullptr;
 }
 
 

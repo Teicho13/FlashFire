@@ -13,8 +13,6 @@ namespace FF
 
 		static SDL_Renderer* GetRenderer();
 	};
-
-	inline SDL_Renderer* g_Renderer = nullptr;
 }
 
 
