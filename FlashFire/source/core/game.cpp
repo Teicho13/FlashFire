@@ -2,7 +2,7 @@
 #include <SDL.h>
 #include "graphics/window.h"
 #include "graphics/renderer.h"
-
+#include "utility/debugLines.h"
 
 namespace FF
 {
@@ -74,6 +74,12 @@ namespace FF
 		
 		renderer::Clear();
 		//note: Render objects here in between clear and presenting to screen
+
+		debugLines::DrawBox(30,30,30,30);
+		debugLines::DrawBoxFill(90,30,30,30);
+		debugLines::Plot(50,80,SDL_Color{255,255,255,255});
+		debugLines::DrawLine(10,10,10,60,SDL_Color{255,0,255,255});
+		
 		renderer::Present();
 	}
 

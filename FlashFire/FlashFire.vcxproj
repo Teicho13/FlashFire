@@ -153,11 +153,13 @@
     <ClCompile Include="source\core\game.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\core\graphics\window.cpp" />
+    <ClCompile Include="source\utility\debugLines.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\core\graphics\renderer.h" />
     <ClInclude Include="source\core\game.h" />
     <ClInclude Include="source\gameConfig.h" />
+    <ClInclude Include="source\utility\debugLines.h" />
     <ClInclude Include="source\utility\deltaTime.h" />
     <ClInclude Include="source\utility\logger.h" />
     <ClInclude Include="source\core\graphics\window.h" />
