@@ -123,13 +123,13 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>thirdparty;thirdparty\SDL2\include;source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>thirdparty;thirdparty\SDL2\include;thirdparty\SDL2-image\include;source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>thirdparty\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>thirdparty\SDL2\lib\x64;thirdparty\SDL2-image\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -141,16 +141,19 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>thirdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>thirdparty;thirdparty\SDL2\include;thirdparty\SDL2-image\include;source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>thirdparty\SDL2\lib\x64;thirdparty\SDL2-image\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\core\graphics\renderer.cpp" />
     <ClCompile Include="source\core\game.cpp" />
+    <ClCompile Include="source\core\managers\resourceManager.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\core\graphics\window.cpp" />
     <ClCompile Include="source\utility\debugLines.cpp" />
@@ -158,6 +161,7 @@
   <ItemGroup>
     <ClInclude Include="source\core\graphics\renderer.h" />
     <ClInclude Include="source\core\game.h" />
+    <ClInclude Include="source\core\managers\resourceManager.h" />
     <ClInclude Include="source\gameConfig.h" />
     <ClInclude Include="source\utility\debugLines.h" />
     <ClInclude Include="source\utility\deltaTime.h" />
@@ -166,6 +170,14 @@
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="thirdparty\SDL2\lib\x64\SDL2.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="thirdparty\SDL2-image\lib\x64\libwebp-7.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="thirdparty\SDL2-image\lib\x64\SDL2_image.dll">
       <FileType>Document</FileType>
     </CopyFileToFolders>
   </ItemGroup>
