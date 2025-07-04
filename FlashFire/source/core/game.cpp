@@ -2,6 +2,8 @@
 #include <SDL.h>
 #include "graphics/window.h"
 #include "graphics/renderer.h"
+#include "managers/resourceManager.h"
+#include "managers/textureManager.h"
 #include "utility/debugLines.h"
 
 namespace FF
@@ -30,6 +32,9 @@ namespace FF
 
 		return 0;
 	}
+
+	SDL_Texture* testTexture;
+	
 	bool game::Init()
 	{
 		//Initialize SDL
@@ -53,15 +58,20 @@ namespace FF
 			return false;
 		}
 
+		resourceManager::Create();
+
 		//save pointer to data of all keystates
 		m_KeyStates = SDL_GetKeyboardState(nullptr);
 		m_ShouldRun = true;
+
+		testTexture = textureManager::CreateTexture(std::string("assets/images/temp/boomkin.jpg"));
 		
 		return true;
 	}
 
 	bool game::Shutdown()
 	{
+		resourceManager::Destroy();
 		renderer::Destroy();
 		window::Destroy();
 		SDL_Quit();
@@ -79,6 +89,9 @@ namespace FF
 		debugLines::DrawBoxFill(90,30,30,30);
 		debugLines::Plot(50,80,SDL_Color{255,255,255,255});
 		debugLines::DrawLine(10,10,10,60,SDL_Color{255,0,255,255});
+
+		const SDL_FRect tempRec{ 150, 150, 150, 150};
+		textureManager::RenderTexture(testTexture,&tempRec);
 		
 		renderer::Present();
 	}

@@ -9,6 +9,9 @@ namespace FF
     class resourceManager
     {
     public:
+        static void Create();
+        static void Destroy();
+        
         SDL_Surface* GetSurface(const std::string& filePath);
         SDL_Texture* GetTexture(const std::string& filePath);
 

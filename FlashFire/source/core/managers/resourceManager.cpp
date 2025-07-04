@@ -1,4 +1,6 @@
 #include "resourceManager.h"
+
+#include <assert.h>
 #include <SDL_surface.h>
 #include <SDL_render.h>
 #include <SDL_image.h>
@@ -7,8 +9,19 @@
 
 namespace FF
 {
-    static resourceManager* s_ResourceManager;
-    
+    static resourceManager* s_ResourceManager = nullptr;
+
+    void resourceManager::Create()
+    {
+        s_ResourceManager = new resourceManager();
+    }
+
+    void resourceManager::Destroy()
+    {
+        delete s_ResourceManager;
+        s_ResourceManager = nullptr;
+    }
+
     SDL_Surface* resourceManager::GetSurface(const std::string& filePath)
     {
         //Look for surface
@@ -43,6 +56,7 @@ namespace FF
 
     resourceManager* resourceManager::GetResourceManager()
     {
+        assert(s_ResourceManager);
         return s_ResourceManager;
     }
 }
