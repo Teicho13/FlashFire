@@ -154,7 +154,9 @@
     <ClCompile Include="source\core\graphics\renderer.cpp" />
     <ClCompile Include="source\core\game.cpp" />
     <ClCompile Include="source\core\managers\resourceManager.cpp" />
+    <ClCompile Include="source\core\managers\sceneManager.cpp" />
     <ClCompile Include="source\core\managers\textureManager.cpp" />
+    <ClCompile Include="source\game\scenes\testScene.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\core\graphics\window.cpp" />
     <ClCompile Include="source\utility\debugLines.cpp" />
@@ -163,8 +165,11 @@
     <ClInclude Include="source\core\graphics\renderer.h" />
     <ClInclude Include="source\core\game.h" />
     <ClInclude Include="source\core\managers\resourceManager.h" />
+    <ClInclude Include="source\core\managers\sceneManager.h" />
     <ClInclude Include="source\core\managers\textureManager.h" />
+    <ClInclude Include="source\core\scene.h" />
     <ClInclude Include="source\gameConfig.h" />
+    <ClInclude Include="source\game\scenes\testScene.h" />
     <ClInclude Include="source\utility\debugLines.h" />
     <ClInclude Include="source\utility\deltaTime.h" />
     <ClInclude Include="source\utility\logger.h" />

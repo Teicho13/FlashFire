@@ -1,10 +1,11 @@
 #include "game.h"
 #include <SDL.h>
+
 #include "graphics/window.h"
 #include "graphics/renderer.h"
 #include "managers/resourceManager.h"
 #include "managers/textureManager.h"
-#include "utility/debugLines.h"
+#include "game/scenes/testScene.h"
 
 namespace FF
 {
@@ -23,7 +24,7 @@ namespace FF
 			HandleInputEvents();
 			//If we are supposed to stop, exit out early.
 			if (!m_ShouldRun) break;
-			
+			m_SceneManager.Update(m_DeltaTime.GetSeconds());
 			Render();
 		}
 
@@ -32,8 +33,6 @@ namespace FF
 
 		return 0;
 	}
-
-	SDL_Texture* testTexture;
 	
 	bool game::Init()
 	{
@@ -64,7 +63,8 @@ namespace FF
 		m_KeyStates = SDL_GetKeyboardState(nullptr);
 		m_ShouldRun = true;
 
-		testTexture = textureManager::CreateTexture(std::string("assets/images/temp/boomkin.jpg"));
+		//Create a test scene that we start in
+		m_SceneManager.ChangeScene(std::make_unique<testScene>());
 		
 		return true;
 	}
@@ -78,21 +78,13 @@ namespace FF
 		return true;
 	}
 	
-	void game::Render()
+	void game::Render() const
 	{
 		if (!m_ShouldRun) return;
 		
 		renderer::Clear();
-		//note: Render objects here in between clear and presenting to screen
-
-		debugLines::DrawBox(30,30,30,30);
-		debugLines::DrawBoxFill(90,30,30,30);
-		debugLines::Plot(50,80,SDL_Color{255,255,255,255});
-		debugLines::DrawLine(10,10,10,60,SDL_Color{255,0,255,255});
-
-		const SDL_FRect tempRec{ 150, 150, 150, 150};
-		textureManager::RenderTexture(testTexture,&tempRec);
-		
+		//Render all objects in current scene.
+		m_SceneManager.Render();
 		renderer::Present();
 	}
 

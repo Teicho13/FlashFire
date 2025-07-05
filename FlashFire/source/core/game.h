@@ -1,5 +1,7 @@
 #pragma once
 #include <SDL_stdinc.h>
+
+#include "managers/sceneManager.h"
 #include "utility/deltaTime.h"
 
 namespace FF
@@ -14,12 +16,13 @@ namespace FF
 
 		bool Init();
 		bool Shutdown();
-		void Render();
+		void Render() const;
 		void HandleInputEvents();
 		
 		const Uint8* m_KeyStates = nullptr;
 		bool m_ShouldRun = false;
 		DeltaTime m_DeltaTime;
+		sceneManager m_SceneManager;
 	};
 }
 
