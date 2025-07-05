@@ -1,6 +1,7 @@
 #include "testScene.h"
 #include "core/managers/textureManager.h"
 #include "utility/debugLines.h"
+#include "utility/logger.h"
 
 namespace FF
 {
@@ -26,5 +27,10 @@ namespace FF
 
         constexpr SDL_FRect tempRec{ 150, 150, 150, 150};
         textureManager::RenderTexture(testTexture,&tempRec);
+    }
+
+    void testScene::MouseButtonUp(const uint8_t button)
+    {
+        Log::Info("Mouse Button: {} Up", button);
     }
 }

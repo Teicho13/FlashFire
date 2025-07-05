@@ -1,4 +1,5 @@
 #pragma once
+
 namespace FF
 {
     class scene
@@ -9,5 +10,7 @@ namespace FF
         virtual void Tick(const float deltaTime) = 0;
         virtual void ShutDown() = 0;
         virtual void Render() = 0;
+
+        virtual void MouseButtonUp(const uint8_t button) = 0;
     };
 }

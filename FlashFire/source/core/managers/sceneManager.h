@@ -13,6 +13,8 @@ namespace FF
         void Shutdown() const;
         void Render() const;
 
+        void MouseButtonUp(uint8_t button) const;
+
         void ChangeScene(std::unique_ptr<scene> newScene);
         void RemoveScene();
 

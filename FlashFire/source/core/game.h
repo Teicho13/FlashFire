@@ -1,6 +1,4 @@
 #pragma once
-#include <SDL_stdinc.h>
-
 #include "managers/sceneManager.h"
 #include "utility/deltaTime.h"
 
@@ -19,7 +17,7 @@ namespace FF
 		void Render() const;
 		void HandleInputEvents();
 		
-		const Uint8* m_KeyStates = nullptr;
+		const uint8_t* m_KeyStates = nullptr;
 		bool m_ShouldRun = false;
 		DeltaTime m_DeltaTime;
 		sceneManager m_SceneManager;

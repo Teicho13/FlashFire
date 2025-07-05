@@ -4,8 +4,8 @@
 #include "graphics/window.h"
 #include "graphics/renderer.h"
 #include "managers/resourceManager.h"
-#include "managers/textureManager.h"
 #include "game/scenes/testScene.h"
+#include "utility/logger.h"
 
 namespace FF
 {
@@ -108,6 +108,10 @@ namespace FF
 					m_ShouldRun = false;
 					return;
 				}
+				break;
+
+			case SDL_MOUSEBUTTONUP:
+				m_SceneManager.MouseButtonUp(event.button.button);
 				break;
 			}
 		}

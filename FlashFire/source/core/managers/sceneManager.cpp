@@ -40,6 +40,14 @@ namespace FF
         }
     }
 
+    void sceneManager::MouseButtonUp(const uint8_t button) const
+    {
+        if (!m_Scenes.empty())
+        {
+            m_Scenes.back()->MouseButtonUp(button);
+        }
+    }
+
     void sceneManager::ChangeScene(std::unique_ptr<scene> newScene)
     {
         if(newScene != nullptr)
