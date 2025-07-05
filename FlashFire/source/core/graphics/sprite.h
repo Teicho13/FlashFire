@@ -12,7 +12,7 @@ namespace FF
         sprite(const std::string& texturePath, int width, int height);
 
         
-        const SDL_Texture* GetTexture() const;
+        SDL_Texture* GetTexture() const;
         SDL_Point GetSize() const;
 
     private:

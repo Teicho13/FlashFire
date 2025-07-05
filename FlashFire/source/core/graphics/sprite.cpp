@@ -20,7 +20,7 @@ namespace FF
     {
     }
 
-    const SDL_Texture* sprite::GetTexture() const
+    SDL_Texture* sprite::GetTexture() const
     {
         return m_Texture;
     }
