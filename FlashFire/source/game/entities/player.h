@@ -15,6 +15,8 @@ namespace FF
 
         void Initialize();
 
+        sprite* GetSprite() const;
+
         void Draw();
 
     private:
