@@ -25,7 +25,7 @@ namespace FF
 
     private:
         std::unique_ptr<animatedSprite> m_AnimatedSprite = nullptr;
-        SDL_FPoint m_Position {0.f,0.f};
+        SDL_FPoint m_Position {32.f,32.f};
         int m_Size = 32;
         
         float m_Speed = 100.f;

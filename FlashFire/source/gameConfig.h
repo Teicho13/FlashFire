@@ -1,8 +1,8 @@
 #pragma once
 struct GameConfig
 {
-	static constexpr int Width = 1080;
-	static constexpr int Height = 720;
+	static constexpr int Width = 896;
+	static constexpr int Height = 992;
 
 	static constexpr bool Fullscreen = false;
 };

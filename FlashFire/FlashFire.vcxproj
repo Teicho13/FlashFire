@@ -160,6 +160,7 @@
     <ClCompile Include="source\core\managers\sceneManager.cpp" />
     <ClCompile Include="source\core\managers\textureManager.cpp" />
     <ClCompile Include="source\game\entities\player.cpp" />
+    <ClCompile Include="source\game\map.cpp" />
     <ClCompile Include="source\game\scenes\testScene.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\core\graphics\window.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="source\core\scene.h" />
     <ClInclude Include="source\gameConfig.h" />
     <ClInclude Include="source\game\entities\player.h" />
+    <ClInclude Include="source\game\map.h" />
     <ClInclude Include="source\game\scenes\testScene.h" />
     <ClInclude Include="source\utility\debugLines.h" />
     <ClInclude Include="source\utility\deltaTime.h" />
