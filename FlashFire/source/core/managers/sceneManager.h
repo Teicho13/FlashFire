@@ -14,6 +14,8 @@ namespace FF
         void Render() const;
 
         void MouseButtonUp(uint8_t button) const;
+        void KeyDown(int32_t button) const;
+        void KeyUp(int32_t button) const;
 
         void ChangeScene(std::unique_ptr<scene> newScene);
         void RemoveScene();

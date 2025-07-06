@@ -108,6 +108,8 @@ namespace FF
 					m_ShouldRun = false;
 					return;
 				}
+
+				m_SceneManager.KeyDown(event.key.keysym.sym);
 				break;
 
 			case SDL_MOUSEBUTTONUP:

@@ -48,6 +48,22 @@ namespace FF
         }
     }
 
+    void sceneManager::KeyDown(const int32_t button) const
+    {
+        if (!m_Scenes.empty())
+        {
+            m_Scenes.back()->KeyDown(button);
+        }
+    }
+
+    void sceneManager::KeyUp(const int32_t button) const
+    {
+        if (!m_Scenes.empty())
+        {
+            m_Scenes.back()->KeyUp(button);
+        }
+    }
+
     void sceneManager::ChangeScene(std::unique_ptr<scene> newScene)
     {
         if(newScene != nullptr)

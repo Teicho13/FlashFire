@@ -12,6 +12,8 @@ namespace FF
         void ShutDown() override;
         void Render() override;
         void MouseButtonUp(const uint8_t button) override;
+        void KeyDown(int32_t button) override;
+        void KeyUp(int32_t button) override;
 
     private:
         SDL_Texture* testTexture = nullptr;

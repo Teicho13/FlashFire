@@ -12,5 +12,7 @@ namespace FF
         virtual void Render() = 0;
 
         virtual void MouseButtonUp(const uint8_t button) = 0;
+        virtual void KeyDown(int32_t button) = 0;
+        virtual void KeyUp(int32_t button) = 0;
     };
 }

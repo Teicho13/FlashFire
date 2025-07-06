@@ -21,9 +21,15 @@ namespace FF
         void Draw();
         void Update(const float deltaTime);
 
+        void SetDirection(int32_t direction);
+
     private:
         std::unique_ptr<animatedSprite> m_AnimatedSprite = nullptr;
-        SDL_Point m_Position {0,0};
+        SDL_FPoint m_Position {0.f,0.f};
+        int m_Size = 32;
+        
+        float m_Speed = 100.f;
+        SDL_FPoint m_Direction {0.f,0.f};
     };
 }
 

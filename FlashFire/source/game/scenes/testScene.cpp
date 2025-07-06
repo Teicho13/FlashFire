@@ -40,4 +40,14 @@ namespace FF
     {
         Log::Info("Mouse Button: {} Up", button);
     }
+
+    void testScene::KeyDown(int32_t button)
+    {
+       pacman.SetDirection(button); 
+    }
+
+    void testScene::KeyUp(int32_t button)
+    {
+        
+    }
 }
