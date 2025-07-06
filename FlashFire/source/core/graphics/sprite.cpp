@@ -23,6 +23,13 @@ namespace FF
         CalculateSizeAndFrames(columns,rows);
     }
 
+    void sprite::Draw(const SDL_FRect PositionAndSize)
+    {
+        SDL_Rect sourceRec;
+        GetSourceRec(sourceRec);
+        textureManager::RenderTexture(GetTexture(),&sourceRec,&PositionAndSize);
+    }
+    
     void sprite::SetFrame(int frame)
     {
         //Check if frames are within bounds

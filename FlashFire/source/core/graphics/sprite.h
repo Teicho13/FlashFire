@@ -11,6 +11,7 @@ namespace FF
         sprite(const std::string& texturePath);
         sprite(const std::string& texturePath, int columns, int rows);
 
+        void Draw(const SDL_FRect PositionAndSize);
         void SetFrame(int frame);
         int GetCurrentFrame() const;
         
@@ -18,7 +19,7 @@ namespace FF
         SDL_Point GetSize() const;
         void GetSourceRec(SDL_Rect &rec) const;
 
-    private:
+    protected:
         void CalculateSizeAndFrames(int columns, int rows);
         
         SDL_Texture* m_Texture = nullptr;

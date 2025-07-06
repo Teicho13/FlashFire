@@ -16,6 +16,7 @@ namespace FF
 
     void testScene::Tick(const float deltaTime)
     {
+        pacman.Update(deltaTime);
     }
 
     void testScene::ShutDown()

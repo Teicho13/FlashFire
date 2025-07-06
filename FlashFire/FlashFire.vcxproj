@@ -151,6 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\core\graphics\animatedSprite.cpp" />
+    <ClCompile Include="source\core\graphics\animation.cpp" />
     <ClCompile Include="source\core\graphics\renderer.cpp" />
     <ClCompile Include="source\core\game.cpp" />
     <ClCompile Include="source\core\graphics\sprite.cpp" />
@@ -164,6 +166,8 @@
     <ClCompile Include="source\utility\debugLines.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\core\graphics\animatedSprite.h" />
+    <ClInclude Include="source\core\graphics\animation.h" />
     <ClInclude Include="source\core\graphics\renderer.h" />
     <ClInclude Include="source\core\game.h" />
     <ClInclude Include="source\core\graphics\sprite.h" />

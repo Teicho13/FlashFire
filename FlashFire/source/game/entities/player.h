@@ -3,6 +3,7 @@
 #include <SDL_rect.h>
 #include <SDL_render.h>
 
+#include "core/graphics/animatedSprite.h"
 #include "core/graphics/sprite.h"
 
 namespace FF
@@ -18,9 +19,10 @@ namespace FF
         sprite* GetSprite() const;
 
         void Draw();
+        void Update(const float deltaTime);
 
     private:
-        std::unique_ptr<sprite> m_Sprite = nullptr;
+        std::unique_ptr<animatedSprite> m_AnimatedSprite = nullptr;
         SDL_Point m_Position {0,0};
     };
 }
