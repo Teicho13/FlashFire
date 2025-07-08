@@ -2,6 +2,8 @@
 #include <array>
 #include <memory>
 #include <string>
+#include <vector>
+#include "entities/pickup.h"
 
 namespace FF
 {
@@ -15,9 +17,13 @@ namespace FF
 
         void DrawMap() const;
 
+        void SpawnPickup(int column, int row, bool pickUp);
+
         int GetTileData(int column, int row) const;
     
     private:
+        std::vector<std::unique_ptr<pickup>> m_Pickups;
+        
         std::unique_ptr<sprite> m_MapSheet = nullptr;
         bool m_IsInitialized = false;
 

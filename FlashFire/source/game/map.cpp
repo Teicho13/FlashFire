@@ -9,6 +9,7 @@ namespace FF
     {
         m_MapSheet = std::make_unique<sprite>(mapTileTexturesPath, columns, rows);
         CreateTiles(mapTileDataPath);
+        m_Pickups.reserve(245);
     }
 
     void map::CreateTiles(const std::string& mapTileDataPath)
@@ -36,13 +37,26 @@ namespace FF
         int itX = 0;
         int itY = 0;
         std::istringstream str_buf {final};
-
+        
         //Loop over all numbers and assign to the right array index.
         while (str_buf >> type)
         {
             hasReachedWhile = true;
 
             m_Map[itY][itX] = type;
+
+            //Check if we should spawn a big or small pickup
+            
+            if (type == 45)
+            {
+                SpawnPickup(itX,itY,false);
+            }
+
+            if (type == 47)
+            {
+                SpawnPickup(itX,itY,true);
+            }
+            
             if (itX < (m_MapColumns - 1))
             {
                 itX++;
@@ -58,6 +72,8 @@ namespace FF
 
             if ((str_buf >> std::ws).peek() == ',')
                 str_buf.ignore();
+
+            
         }
 
         file.close();
@@ -84,6 +100,22 @@ namespace FF
                 m_MapSheet->Draw(tempRec);
             }
         }
+
+        if (!m_Pickups.empty())
+        {
+            for (const auto& pickup : m_Pickups)
+            {
+                pickup->Draw();
+            }
+        }
+    }
+
+    void map::SpawnPickup(int column, int row, bool pickUp)
+    {
+        auto posX = column * 32.f + (pickUp ? 4.f : 12.f);
+        auto posY = row * 32.f + (pickUp ? 4.f : 12.f);
+        
+        m_Pickups.emplace_back(std::make_unique<pickup>(posX, posY, pickUp));
     }
 
     int map::GetTileData(int column, int row) const
