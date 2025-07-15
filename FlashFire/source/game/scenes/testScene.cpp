@@ -11,6 +11,7 @@ namespace FF
         testTexture = textureManager::CreateTexture(std::string("assets/images/temp/boomkin.jpg"));
         m_Player.Initialize();
         m_Map.SetTileMap(std::string("assets/maps/pacman-mapsheet.png"),std::string("assets/maps/FlashFireTilemap.csv"),16,3);
+        m_Player.m_MapPointer = &m_Map;
     }
 
     void testScene::Tick(const float deltaTime)

@@ -122,4 +122,14 @@ namespace FF
     {
         return m_Map[row][column];
     }
+
+    bool map::IsTileWalkable(int TileID)
+    {
+        if (TileID == 44 || TileID == 45 || TileID == 47)
+        {
+            return true;
+        }
+        
+        return false;
+    }
 }

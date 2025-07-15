@@ -8,6 +8,8 @@
 
 namespace FF
 {
+    enum class direction : std::uint8_t { none, up, down, left, right };
+    class map;
     class player
     {
     public:
@@ -19,17 +21,20 @@ namespace FF
         sprite* GetSprite() const;
 
         void Draw();
-        void Update(const float deltaTime);
+        void Update(float deltaTime);
+        void Move(float deltaTime);
 
         void SetDirection(int32_t direction);
+        bool NextTileIsWalkable() const;
 
+        map* m_MapPointer = nullptr;
     private:
         std::unique_ptr<animatedSprite> m_AnimatedSprite = nullptr;
-        SDL_FPoint m_Position {32.f,32.f};
+        SDL_FPoint m_Position {48.f,48.f};
         int m_Size = 32;
         
         float m_Speed = 100.f;
-        SDL_FPoint m_Direction {0.f,0.f};
+        direction m_Direction = direction::none;
     };
 }
 

@@ -20,6 +20,7 @@ namespace FF
         void SpawnPickup(int column, int row, bool pickUp);
 
         int GetTileData(int column, int row) const;
+        static bool IsTileWalkable(int TileID);
     
     private:
         std::vector<std::unique_ptr<pickup>> m_Pickups;
