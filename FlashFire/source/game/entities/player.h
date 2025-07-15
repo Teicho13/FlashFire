@@ -24,6 +24,7 @@ namespace FF
         void Update(float deltaTime);
         void Move(float deltaTime);
 
+        void NextDirection(float deltaTime);
         void SetDirection(int32_t direction);
         bool NextTileIsWalkable() const;
 
@@ -34,6 +35,7 @@ namespace FF
         int m_Size = 32;
         
         float m_Speed = 100.f;
+        direction m_NextDirection = direction::none;
         direction m_Direction = direction::none;
     };
 }

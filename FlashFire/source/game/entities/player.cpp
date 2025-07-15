@@ -34,6 +34,7 @@ namespace FF
     void player::Update(const float deltaTime)
     {
         if (m_AnimatedSprite)  m_AnimatedSprite->Update(deltaTime);
+        NextDirection(deltaTime);
         if (NextTileIsWalkable())
         {
           Move(deltaTime);  
@@ -61,28 +62,41 @@ namespace FF
         }
     }
 
+    void player::NextDirection(const float deltaTime)
+    {
+        if (m_Direction == m_NextDirection) return;
+        direction oldDirection = m_Direction;
+        m_Direction = m_NextDirection;
+        //Check if the new direction can we walked towards otherwise we revert the direction change.
+        if (!NextTileIsWalkable())
+        {
+            m_Direction = oldDirection;
+        }
+        
+    }
+
     void player::SetDirection(const int32_t direction)
     {
         switch (direction)
         {
         default:
         case 100:
-            m_Direction = direction::right;
+            m_NextDirection = direction::right;
             m_AnimatedSprite->SetAnimationOffset(0);
             break;
 
         case 97:
-            m_Direction = direction::left;
+            m_NextDirection = direction::left;
             m_AnimatedSprite->SetAnimationOffset(3);
             break;
 
         case 115:
-            m_Direction = direction::down;
+            m_NextDirection = direction::down;
             m_AnimatedSprite->SetAnimationOffset(6);
             break;
 
         case 119:
-            m_Direction = direction::up;
+            m_NextDirection = direction::up;
             m_AnimatedSprite->SetAnimationOffset(9);
             break;
         }
