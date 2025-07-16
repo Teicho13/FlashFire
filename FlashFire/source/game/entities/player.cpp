@@ -1,4 +1,6 @@
 #include "player.h"
+
+#include "gameConfig.h"
 #include "core/managers/textureManager.h"
 #include "game/map.h"
 #include "utility/debugLines.h"
@@ -27,8 +29,8 @@ namespace FF
         }
         
         debugLines::DrawBox(static_cast<int>(m_Position.x / 32) * 32.f,static_cast<int>(m_Position.y / 32) * 32.f,32.f,32.f);
-        debugLines::DrawBox((static_cast<int>(m_Position.x / 32) + 1) * 32.f,static_cast<int>(m_Position.y / 32) * 32.f,32.f,32.f,SDL_Color{255,255,0,255});
-        debugLines::DrawBox((static_cast<int>(m_Position.x / 32) + -1) * 32.f,static_cast<int>(m_Position.y / 32) * 32.f,32.f,32.f,SDL_Color{255,0,255,255});
+        debugLines::DrawBox((static_cast<int>((m_Position.x - 8) / 32) - 1) * 32.f,static_cast<int>(m_Position.y / 32) * 32.f,32.f,32.f,SDL_Color{255,255,0,255});
+        debugLines::DrawBox((static_cast<int>((m_Position.x + 8) / 32) + 1) * 32.f,static_cast<int>(m_Position.y / 32) * 32.f,32.f,32.f,SDL_Color{255,0,255,255});
     }
 
     void player::Update(const float deltaTime)
@@ -85,8 +87,23 @@ namespace FF
         if (!NextTileIsWalkable())
         {
             m_Direction = oldDirection;
+            return;
         }
-        
+
+        if (GameConfig::TurnSnapping)
+        {
+            if (m_Direction == direction::left ||  m_Direction == direction::right)
+            {
+                m_Position.y = (static_cast<int>( m_Position.y / 32) * 32.f) + 16.f;
+                return;
+            }
+
+            if (m_Direction == direction::up ||  m_Direction == direction::down)
+            {
+                m_Position.x = (static_cast<int>( m_Position.x / 32) * 32.f) + 16.f;
+                return;
+            } 
+        }
     }
 
     void player::SetDirection(const int32_t direction)
@@ -123,13 +140,13 @@ namespace FF
         int NextTileID = 0;
         switch (m_Direction) {
         case direction::up:
-            NextTileID = m_MapPointer->GetTileData(static_cast<int>(m_Position.x  / 32) ,static_cast<int>((m_Position.y + 16) / 32) - 1);
+            NextTileID = m_MapPointer->GetTileData(static_cast<int>(m_Position.x  / 32) ,static_cast<int>((m_Position.y + 12) / 32) - 1);
             break;
         case direction::down:
             NextTileID = m_MapPointer->GetTileData(static_cast<int>(m_Position.x  / 32) ,static_cast<int>((m_Position.y - 16) / 32) + 1);
             break;
         case direction::left:
-            NextTileID = m_MapPointer->GetTileData(static_cast<int>((m_Position.x + 16) / 32) - 1,static_cast<int>(m_Position.y / 32.f));
+            NextTileID = m_MapPointer->GetTileData(static_cast<int>((m_Position.x + 12) / 32) - 1,static_cast<int>(m_Position.y / 32.f));
             break;
         case direction::right:
             NextTileID = m_MapPointer->GetTileData(static_cast<int>((m_Position.x - 16) / 32) + 1,static_cast<int>(m_Position.y / 32.f));
