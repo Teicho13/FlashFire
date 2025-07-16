@@ -94,7 +94,7 @@ namespace FF
             for (int j = 0; j < m_MapColumns; ++j)
             {
                 m_MapSheet->SetFrame(m_Map[i][j]);
-                const float posX = 32.f * static_cast<float>(j);
+                const float posX = (32.f * static_cast<float>(j)) - 32 * 3;
                 const float PosY = 32.f * static_cast<float>(i);
                 const SDL_FRect tempRec{ posX, PosY, 32, 32};
                 m_MapSheet->Draw(tempRec);
@@ -112,7 +112,7 @@ namespace FF
 
     void map::SpawnPickup(int column, int row, bool pickUp)
     {
-        auto posX = column * 32.f + (pickUp ? 4.f : 12.f);
+        auto posX = (column * 32.f + (pickUp ? 4.f : 12.f)) - 32.f * 3;
         auto posY = row * 32.f + (pickUp ? 4.f : 12.f);
         
         m_Pickups.emplace_back(std::make_unique<pickup>(posX, posY, pickUp));
@@ -120,7 +120,8 @@ namespace FF
 
     int map::GetTileData(int column, int row) const
     {
-        return m_Map[row][column];
+        //We add 3 since we offset the map.
+        return m_Map[row][column + 3];
     }
 
     bool map::IsTileWalkable(int TileID)

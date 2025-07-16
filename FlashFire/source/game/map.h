@@ -29,7 +29,7 @@ namespace FF
         bool m_IsInitialized = false;
 
         static constexpr int m_MapRows = 31;
-        static constexpr int m_MapColumns = 28;
+        static constexpr int m_MapColumns = 34;
         std::array<std::array<int, m_MapColumns>, m_MapRows> m_Map;
     };
 }

@@ -60,6 +60,20 @@ namespace FF
         case direction::none:
             break;
         }
+        
+        //Logic for teleporting between 2 sides
+        
+        if (m_Position.x <= -32.f)
+        {
+            m_Position.x = 864.f;
+            return;
+        }
+
+        if (m_Position.x >= 900.f)
+        {
+            m_Position.x = 0.f;
+            return;
+        }
     }
 
     void player::NextDirection(const float deltaTime)
