@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "entities/pickup.h"
+#include "entities/player.h"
 
 namespace FF
 {
@@ -16,6 +17,8 @@ namespace FF
         void CreateTiles(const std::string& mapTileDataPath);
 
         void DrawMap() const;
+
+        void PlayerPickupsCheck(player& player);
 
         void SpawnPickup(int column, int row, bool pickUp);
 

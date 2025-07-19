@@ -19,6 +19,7 @@ namespace FF
         void Initialize();
 
         sprite* GetSprite() const;
+        SDL_FPoint GetPosition() const;
 
         void Draw();
         void Update(float deltaTime);

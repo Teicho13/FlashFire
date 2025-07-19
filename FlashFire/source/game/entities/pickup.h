@@ -8,6 +8,7 @@ namespace FF
     public:
         pickup(float x, float y, bool powerUp);
         void Draw();
+        bool HasOverlapWithPoint(float x, float y) const;
 
     private:
         bool m_IsPowerUp = false;

@@ -17,6 +17,7 @@ namespace FF
     void testScene::Tick(const float deltaTime)
     {
         m_Player.Update(deltaTime);
+        m_Map.PlayerPickupsCheck(m_Player);
     }
     
     void testScene::Render()

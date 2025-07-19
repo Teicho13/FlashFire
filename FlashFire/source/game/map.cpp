@@ -110,6 +110,21 @@ namespace FF
         }
     }
 
+    void map::PlayerPickupsCheck(player& player)
+    {
+        if (!m_Pickups.empty())
+        {
+            for (int i = m_Pickups.size() - 1; i >= 0; --i)
+            {
+                if (m_Pickups[i]->HasOverlapWithPoint(player.GetPosition().x,player.GetPosition().y))
+                {
+                    m_Pickups.erase(m_Pickups.begin() + i);
+                }
+            }
+        }
+        
+    }
+
     void map::SpawnPickup(int column, int row, bool pickUp)
     {
         auto posX = (column * 32.f + (pickUp ? 4.f : 12.f)) - 32.f * 3;

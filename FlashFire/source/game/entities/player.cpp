@@ -19,6 +19,11 @@ namespace FF
         return m_AnimatedSprite.get();
     }
 
+    SDL_FPoint player::GetPosition() const
+    {
+        return m_Position;
+    }
+
     void player::Draw()
     {
         if (m_AnimatedSprite)
