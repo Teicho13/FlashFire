@@ -3,6 +3,7 @@
 #include "core/scene.h"
 #include "game/map.h"
 #include "game/entities/player.h"
+#include "game/entities/ghosts/ghost.h"
 
 namespace FF
 {
@@ -21,6 +22,7 @@ namespace FF
         SDL_Texture* testTexture = nullptr;
 
         player m_Player;
+        ghost m_Ghost;
         map m_Map;
     };   
 }

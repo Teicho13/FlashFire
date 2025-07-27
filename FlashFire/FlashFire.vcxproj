@@ -159,6 +159,7 @@
     <ClCompile Include="source\core\managers\resourceManager.cpp" />
     <ClCompile Include="source\core\managers\sceneManager.cpp" />
     <ClCompile Include="source\core\managers\textureManager.cpp" />
+    <ClCompile Include="source\game\entities\ghosts\ghost.cpp" />
     <ClCompile Include="source\game\entities\pickup.cpp" />
     <ClCompile Include="source\game\entities\player.cpp" />
     <ClCompile Include="source\game\map.cpp" />
@@ -178,6 +179,7 @@
     <ClInclude Include="source\core\managers\textureManager.h" />
     <ClInclude Include="source\core\scene.h" />
     <ClInclude Include="source\gameConfig.h" />
+    <ClInclude Include="source\game\entities\ghosts\ghost.h" />
     <ClInclude Include="source\game\entities\pickup.h" />
     <ClInclude Include="source\game\entities\player.h" />
     <ClInclude Include="source\game\map.h" />

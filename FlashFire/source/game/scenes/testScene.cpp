@@ -12,6 +12,7 @@ namespace FF
         m_Player.Initialize();
         m_Map.SetTileMap(std::string("assets/maps/pacman-mapsheet.png"),std::string("assets/maps/FlashFireTilemap.csv"),16,3);
         m_Player.m_MapPointer = &m_Map;
+        m_Ghost.Initialize("assets/images/characters/blinky.png",5,1);
     }
 
     void testScene::Tick(const float deltaTime)
@@ -24,6 +25,7 @@ namespace FF
     {
         m_Map.DrawMap();
         m_Player.Draw();
+        m_Ghost.Draw();
     }
 
     void testScene::MouseButtonUp(const uint8_t button)
