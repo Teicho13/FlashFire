@@ -5,6 +5,7 @@
 
 namespace FF
 {
+    enum class direction : std::uint8_t { none, up, down, left, right };
     class entity
     {
     public:
@@ -14,7 +15,7 @@ namespace FF
         virtual void Draw();
         virtual void Update(float deltaTime){}
 
-        void SetPosition(int newX, int newY);
+        void SetPosition(float newX, float newY);
         
         sprite* GetSprite() const;
         SDL_FPoint GetPosition() const;
@@ -23,6 +24,7 @@ namespace FF
 
         SDL_FPoint m_Position {48.f,48.f};
         int m_Size = 32;
+        float m_Speed = 100.f;
         
         std::unique_ptr<sprite> m_Sprite = nullptr;    
     }; 

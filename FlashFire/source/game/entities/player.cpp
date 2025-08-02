@@ -1,54 +1,34 @@
 #include "player.h"
-
-#include "gameConfig.h"
-#include "core/managers/textureManager.h"
 #include "game/map.h"
+#include "gameConfig.h"
 #include "utility/debugLines.h"
 
 namespace FF
 {
-    void player::Initialize()
+    void player::Initialize(const std::string& texturePath, int columns, int rows)
     {
-        m_AnimatedSprite.reset(new animatedSprite("assets/images/characters/pacman.png",12,1,true,true));
-        m_AnimatedSprite->getAnimation()->SetMaxFrames(2);
-        m_AnimatedSprite->SetAnimationOffset(0);
-    }
-
-    sprite* player::GetSprite() const
-    {
-        return m_AnimatedSprite.get();
-    }
-
-    SDL_FPoint player::GetPosition() const
-    {
-        return m_Position;
-    }
-
-    void player::Draw()
-    {
-        if (m_AnimatedSprite)
-        {
-            const auto displaySize = static_cast<float>(m_Size);
-            const SDL_FRect tempRec{ m_Position.x - displaySize / 2, m_Position.y - displaySize / 2, displaySize, displaySize};
-            m_AnimatedSprite->Draw(tempRec);
-        }
+        auto newSprite = std::make_unique<animatedSprite>(texturePath,columns,rows,true,true);
+        newSprite->getAnimation()->SetMaxFrames(2);
+        newSprite->SetAnimationOffset(0);
         
-        debugLines::DrawBox(static_cast<int>(m_Position.x / 32) * 32.f,static_cast<int>(m_Position.y / 32) * 32.f,32.f,32.f);
-        debugLines::DrawBox((static_cast<int>((m_Position.x - 8) / 32) - 1) * 32.f,static_cast<int>(m_Position.y / 32) * 32.f,32.f,32.f,SDL_Color{255,255,0,255});
-        debugLines::DrawBox((static_cast<int>((m_Position.x + 8) / 32) + 1) * 32.f,static_cast<int>(m_Position.y / 32) * 32.f,32.f,32.f,SDL_Color{255,0,255,255});
+        m_AnimatedSprite = newSprite.get();
+        m_Sprite = std::move(newSprite);
     }
 
     void player::Update(const float deltaTime)
     {
+        entity::Update(deltaTime);
+
         if (m_AnimatedSprite)  m_AnimatedSprite->Update(deltaTime);
         NextDirection(deltaTime);
         if (NextTileIsWalkable())
         {
-          Move(deltaTime);  
+            Move(deltaTime);  
+            Move(deltaTime);  
         }
     }
 
-    void player::Move(float deltaTime)
+        void player::Move(float deltaTime)
     {
         switch (m_Direction)
         {
@@ -83,7 +63,16 @@ namespace FF
         }
     }
 
-    void player::NextDirection(const float deltaTime)
+        void player::Draw()
+        {
+            entity::Draw();
+
+            debugLines::DrawBox(static_cast<int>(m_Position.x / 32) * 32.f,static_cast<int>(m_Position.y / 32) * 32.f,32.f,32.f);
+            debugLines::DrawBox((static_cast<int>((m_Position.x - 8) / 32) - 1) * 32.f,static_cast<int>(m_Position.y / 32) * 32.f,32.f,32.f,SDL_Color{255,255,0,255});
+            debugLines::DrawBox((static_cast<int>((m_Position.x + 8) / 32) + 1) * 32.f,static_cast<int>(m_Position.y / 32) * 32.f,32.f,32.f,SDL_Color{255,0,255,255});
+        }
+
+        void player::NextDirection(const float deltaTime)
     {
         if (m_Direction == m_NextDirection) return;
         direction oldDirection = m_Direction;

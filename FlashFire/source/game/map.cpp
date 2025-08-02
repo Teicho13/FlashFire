@@ -114,7 +114,7 @@ namespace FF
     {
         if (!m_Pickups.empty())
         {
-            for (int i = m_Pickups.size() - 1; i >= 0; --i)
+            for (size_t i = m_Pickups.size() - 1; i > 0; --i)
             {
                 if (m_Pickups[i]->HasOverlapWithPoint(player.GetPosition().x,player.GetPosition().y))
                 {

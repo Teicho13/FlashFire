@@ -2,7 +2,7 @@
 
 namespace FF
 {
-    void entity::SetPosition(int newX, int newY)
+    void entity::SetPosition(float newX, float newY)
     {
         m_Position.x = newX;
         m_Position.y = newY;

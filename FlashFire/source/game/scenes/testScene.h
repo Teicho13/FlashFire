@@ -22,7 +22,7 @@ namespace FF
         SDL_Texture* testTexture = nullptr;
 
         player m_Player;
-        ghost m_blinky;
+        ghost m_Blinky;
         map m_Map;
     };   
 }

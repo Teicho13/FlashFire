@@ -9,9 +9,9 @@ namespace FF
     void testScene::Init()
     {
         testTexture = textureManager::CreateTexture(std::string("assets/images/temp/boomkin.jpg"));
-        m_Player.Initialize();
-        m_blinky.Initialize(std::string("assets/images/characters/blinky.png"),5,1);
-        m_blinky.SetPosition(368.f,464.f);
+        m_Player.Initialize(std::string("assets/images/characters/pacman.png"),12,1);
+        m_Blinky.Initialize(std::string("assets/images/characters/blinky.png"),5,1);
+        m_Blinky.SetPosition(368.f,464.f);
         m_Map.SetTileMap(std::string("assets/maps/pacman-mapsheet.png"),std::string("assets/maps/FlashFireTilemap.csv"),16,3);
         m_Player.m_MapPointer = &m_Map;
     }
@@ -26,7 +26,7 @@ namespace FF
     {
         m_Map.DrawMap();
         m_Player.Draw();
-        m_blinky.Draw();
+        m_Blinky.Draw();
     }
 
     void testScene::MouseButtonUp(const uint8_t button)
